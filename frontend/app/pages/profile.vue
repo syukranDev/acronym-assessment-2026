@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto max-w-2xl space-y-6 px-4 py-12">
+  <div class="mx-auto w-[50%] space-y-6 px-4 py-12">
     <h1 class="text-2xl font-semibold">Profile</h1>
     <UAlert
       v-if="errorMessage"

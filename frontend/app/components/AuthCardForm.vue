@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto max-w-md space-y-6 px-4 py-12">
+  <div class="mx-auto w-[50%] space-y-6 px-4 py-12">
     <h1 class="text-2xl font-semibold">{{ title }}</h1>
 
     <UCard>
