@@ -4,7 +4,8 @@ export const api = axios.create()
 
 export function getApi() {
   const config = useRuntimeConfig()
-  api.defaults.baseURL = config.public.apiBase || ''
+  const apiBase = String(config.public.apiBase || '').trim().replace(/\/+$/, '')
+  api.defaults.baseURL = `${apiBase}/api`
   return api
 }
 

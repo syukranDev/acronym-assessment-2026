@@ -32,12 +32,12 @@ export type SignupResponse = {
 }
 
 export async function loginApi(payload: LoginRequest) {
-  const res = await getApi().post<LoginResponse>('/api/auth/login', payload)
+  const res = await getApi().post<LoginResponse>('/auth/login', payload)
   return res.data
 }
 
 export async function signupApi(payload: SignupRequest) {
-  const res = await getApi().post<SignupResponse>('/api/auth/signup', payload)
+  const res = await getApi().post<SignupResponse>('/auth/signup', payload)
   return res.data
 }
 

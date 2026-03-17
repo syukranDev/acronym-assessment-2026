@@ -3,8 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   srcDir: 'app',
   routeRules: {
-    '/': { redirect: '/home' },
-    '/api/**': { proxy: { to: 'http://localhost:3003/api/**' } }
+    '/': { redirect: '/home' }
   },
   modules: [
     '@nuxt/ui',

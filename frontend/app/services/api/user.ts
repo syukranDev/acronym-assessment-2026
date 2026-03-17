@@ -15,7 +15,7 @@ export type UserProfileResponse = {
 }
 
 export const getUserProfileApi = async (token: string) => {
-  const res = await getApi().get<UserProfileResponse>('/api/user/profile', {
+  const res = await getApi().get<UserProfileResponse>('/user/profile', {
     headers: {
       Authorization: `Bearer ${token}`
     }
