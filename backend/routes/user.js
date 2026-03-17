@@ -7,10 +7,10 @@ router.get('/', (req, res) => {
   res.json({ data: items });
 });
 
-// router.get('/', (req, res) => {
-//   const items = userBusiness.welcomeRemarks();
-//   res.json({ data: items });
-// });
+router.get('/all', async (req, res) => {
+  const items = await userBusiness.getAllUsers();
+  res.json({ data: items });
+});
 
 // router.get('/', (req, res) => {
 //   const items = userBusiness.welcomeRemarks();
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 
 // router.get('/', (req, res) => {
 //   const items = userBusiness.welcomeRemarks();
-//   res.json({ data: items });
+//   res.json({ data: items })
 // });
 
 // router.get('/', (req, res) => {
