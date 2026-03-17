@@ -3,9 +3,9 @@ const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
 const jwt = require('jsonwebtoken');
 
-let Users = {};
+let Auth = {};
 
-Users.createNewUser = async function(req, res) {
+Auth.createNewUser = async function(req, res) {
   let { name, email, password } = req.body;
   
   if (!name || !email || !password) 
@@ -42,7 +42,7 @@ Users.createNewUser = async function(req, res) {
   }
 }
 
-Users.loginExistingUser = async function(req, res) {
+Auth.loginExistingUser = async function(req, res) {
   let { email, password } = req.body;
   if (!email || !password) return res.status(422).json({ status: 'error', message: 'All fields are required' });
   const hasAt = email.includes('@');
@@ -63,4 +63,4 @@ Users.loginExistingUser = async function(req, res) {
   }
 }
 
-module.exports = Users;
+module.exports = Auth;
