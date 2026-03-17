@@ -14,7 +14,7 @@ app.use(requestLogger);
 
 const allowedOrigins = [
     'https://acronymassessment.syukrandev.com',
-    'http://localhost:3000' 
+    'http://localhost:3007' 
 ]
 
 app.use(cors({
