@@ -3,12 +3,19 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   srcDir: 'app',
   routeRules: {
-    '/': { redirect: '/home' }
+    '/': { redirect: '/home' },
+    '/api/**': { proxy: { to: 'http://localhost:3003/api/**' } }
   },
   modules: [
-    '@nuxt/ui'
+    '@nuxt/ui',
+    '@pinia/nuxt'
   ],
   css: ['~/assets/css/main.css'],
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || ''
+    }
+  },
   app: {
     head: {
       link: [

@@ -1,7 +1,7 @@
 <template>
   <UFooter>
     <template #default>
-      <span class="text-sm text-muted">made by</span>
+      <span class="mr-1 text-sm text-muted">made by</span>
       <ULink
         href="https://syukrandev.com"
         target="_blank"
