@@ -1,5 +1,5 @@
 <template>
-  <div class="flex min-h-[calc(100vh-56px)] items-center justify-center px-4">
+  <div class="flex flex-1 items-center justify-center px-4">
     <div class="mx-auto max-w-2xl text-center">
       <h1 class="text-2xl font-semibold mb-2">
         Welcome <span v-if="displayName"> {{ displayName }}</span>
