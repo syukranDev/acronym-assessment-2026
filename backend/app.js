@@ -9,7 +9,6 @@ const requestLogger = require('./middleware/requestLogger');
 const logger = require('./config/logger');
 
 const app = express();
-app.use(cors());
 app.use(express.json());
 app.use(requestLogger);
 
