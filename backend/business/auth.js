@@ -55,7 +55,7 @@ Auth.loginExistingUser = async function(req, res) {
   if (password.length < 6) return res.status(422).json({ status: 'error', message: 'Password must be at least 6 characters long' });
   
   try {
-    const user = await db('users').where('emai', email).first();
+    const user = await db('users').where('email', email).first();
     if (!user) throw new Error('User not found');
   
     const isPasswordValid = await bcrypt.compare(password, user.password);
