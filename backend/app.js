@@ -13,6 +13,20 @@ app.use(cors());
 app.use(express.json());
 app.use(requestLogger);
 
+const allowedOrigins = [
+    'https://acronymassessment.syukrandev.com',
+    'http://localhost:3000' 
+]
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) return callback(null, true)
+        return callback(new Error('Not allowed by CORS'))
+    },
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}))
+
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 
@@ -22,7 +36,7 @@ app.use((err, req, res, next) => {
     status: err.status,
     stack: err.stack
   });
-  
+
   if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
     return res.status(400).json({ message: 'Invalid JSON syntax' });
   }
