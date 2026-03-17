@@ -82,6 +82,7 @@ const title = computed(() => (props.mode === 'login' ? 'Login' : 'Sign up'))
 const submitLabel = computed(() => (props.mode === 'login' ? 'Login' : 'Sign up'))
 
 const auth = useAuthStore()
+const toast = useToast()
 const errorMessage = ref<string | null>(null)
 const pending = ref(false)
 
@@ -92,6 +93,11 @@ async function onSubmit() {
   try {
     if (props.mode === 'login') {
       await auth.login({ email: email.value, password: password.value })
+      toast.add({
+        title: 'Login successful',
+        description: 'Welcome back.',
+        color: 'success'
+      })
       await navigateTo('/home')
       return
     }
@@ -104,6 +110,11 @@ async function onSubmit() {
     if (response.status !== 'success') {
       throw new Error(response.message || 'Signup failed')
     }
+    toast.add({
+      title: 'Registration successful',
+      description: 'Please login with your new account.',
+      color: 'success'
+    })
     await navigateTo('/login')
   } catch (err: any) {
     const axiosErr = err as AxiosError<any>
