@@ -61,7 +61,7 @@ Auth.loginExistingUser = async function(req, res) {
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) return res.status(422).json({ status: 'error', message: 'Invalid password' });
 
-    const token = jwt.sign({ userId: user.id, name: user.name }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user.id, name: user.name }, process.env.JWT_SECRET, { expiresIn: '15m' });
     return res.json({ status: 'success', message: 'User logged in successfully', data: { user, token } });
   } catch (error) {
     logger.error('loginExistingUser', { message: error.message, stack: error.stack });
