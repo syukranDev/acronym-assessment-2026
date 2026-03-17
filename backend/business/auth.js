@@ -56,7 +56,7 @@ Auth.loginExistingUser = async function(req, res) {
   
   try {
     const user = await db('users').where('email', email).first();
-    if (!user) return res.status(422).json({ status: 'error', message: 'User not found' });
+    if (!user) return res.status(422).json({ status: 'error', message: 'Invalid email or password' });
   
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) return res.status(422).json({ status: 'error', message: 'Invalid password' });
