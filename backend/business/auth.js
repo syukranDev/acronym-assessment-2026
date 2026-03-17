@@ -25,7 +25,7 @@ Auth.createNewUser = async function(req, res) {
 
   try {
     const existingEmail = await db('users').where('email', email).first();
-    if (existingEmail) throw new Error('Email or username already exists');
+    if (existingEmail) return res.status(422).json({ status: 'error', message: 'Email or username already exists' });
 
     const hashedPassword = await bcrypt.hash(password, 10);
     
@@ -56,12 +56,12 @@ Auth.loginExistingUser = async function(req, res) {
   
   try {
     const user = await db('users').where('email', email).first();
-    if (!user) throw new Error('User not found');
+    if (!user) return res.status(422).json({ status: 'error', message: 'User not found' });
   
     const isPasswordValid = await bcrypt.compare(password, user.password);
-    if (!isPasswordValid) throw new Error('Invalid password');
+    if (!isPasswordValid) return res.status(422).json({ status: 'error', message: 'Invalid password' });
 
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user.id, name: user.name }, process.env.JWT_SECRET, { expiresIn: '1h' });
     return res.json({ status: 'success', message: 'User logged in successfully', data: { user, token } });
   } catch (error) {
     logger.error('loginExistingUser', { message: error.message, stack: error.stack });

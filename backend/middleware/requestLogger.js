@@ -10,10 +10,11 @@ function redact(body) {
 function requestLogger(req, res, next) {
   const start = Date.now();
   const payload = redact(req.body);
+  const payloadObj = payload && typeof payload === 'object' ? payload : {};
   logger.info('request', {
     method: req.method,
     url: req.originalUrl || req.url,
-    payload: Object.keys(payload).length ? payload : undefined,
+    payload: Object.keys(payloadObj).length ? payloadObj : undefined,
     query: Object.keys(req.query || {}).length ? req.query : undefined
   });
 
