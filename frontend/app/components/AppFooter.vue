@@ -6,7 +6,7 @@
         href="https://syukrandev.com"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-sm"
+        class="text-sm font-bold italic"
       >
         syukransoleh
       </ULink>

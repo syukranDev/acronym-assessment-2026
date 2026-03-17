@@ -2,12 +2,12 @@
   <div class="flex flex-1 items-center justify-center px-4">
     <div class="mx-auto max-w-2xl text-center">
       <h1 class="text-2xl font-semibold mb-2">
-        Welcome <span v-if="displayName"> {{ displayName }}</span>
+        Welcome, <span v-if="displayName"> {{ displayName ?? 'NA' }}</span>
       </h1>
       <p v-if="auth.isAuthed" class="text-muted">
-        You have logged in, click my profile to see your details
+        You have logged in, click "My Profile" on navbar to see your details
       </p>
-      <p v-else class="text-muted">Please log in</p>
+      <p v-else class="text-muted">This is public view, you may try login.</p>
     </div>
   </div>
 </template>
