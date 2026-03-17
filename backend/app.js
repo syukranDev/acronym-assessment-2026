@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 3001;
 
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
+const swaggerRoutes = require('./routes/swagger');
 const requestLogger = require('./middleware/requestLogger');
 const logger = require('./config/logger');
 
@@ -14,7 +15,7 @@ app.use(requestLogger);
 
 const allowedOrigins = [
     'https://acronymassessment.syukrandev.com',
-    'http://localhost:3007' 
+    'http://localhost:3008' 
 ]
 
 app.use(cors({
@@ -26,6 +27,7 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
 }))
 
+app.use('/swagger', swaggerRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 
