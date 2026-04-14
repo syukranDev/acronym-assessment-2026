@@ -8,11 +8,6 @@ Full-stack app with:
 - Node.js + npm installed
 - Local PostgreSQL databse (or hosted)
 
-## Live Production
-[https://acronymassessment.syukrandev.com](https://acronymassessment.syukrandev.com/)
-
-[API DOC via SWAGGER](https://acronymassessment-api.syukrandev.com/swagger)
-
 # Local Setup
 
 ## Backend 
